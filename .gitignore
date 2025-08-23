@@ -1,0 +1,41 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+
+# Output directories
+/bin/
+/build/
+/dist/
+
+# Go build cache
+*.out
+
+# Dependency directories (vendor/)
+vendor/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+.DS_Store
+Thumbs.db
+
+# Test and coverage
+*.coverprofile
+*.test
+coverage*
+
+# Logs
+*.log
+
+# Local env/config
+.env
+.env.*
+
+# GitHub Actions local runner
+/.act/
