@@ -10,7 +10,7 @@ This project translates OpenConfig/NETCONF XML into MikroTik RouterOS API comman
 
 ## Supported OpenConfig System Features
 - Hostname
-- Clock (timezone)
+- Clock (timezone, timezone-utc-offset get)
 - NTP (servers, enable/disable)
 - DNS (servers)
 - (Extendable: AAA, Logging, etc.)
@@ -30,8 +30,16 @@ This project translates OpenConfig/NETCONF XML into MikroTik RouterOS API comman
    - Add or update unit tests to cover the new feature.
 4. **Pull requests or commits should be blocked if documentation or tests are missing for new features.**
 
+
+## End-to-End Device Testing
+- To run end-to-end tests, set the following environment variables:
+   - `MIKROTIK_ADDR` (required): MikroTik device IP and port (e.g., 192.168.1.35:8728)
+   - `MIKROTIK_USER` (required): MikroTik username
+   - `MIKROTIK_PASS` (required): MikroTik password
+- If `MIKROTIK_ADDR` is not set, device tests will be skipped with a message.
+
 ## Example Usage
-```
+```sh
 go run translator.go '<netconf-xml>'
 ```
 

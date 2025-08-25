@@ -1,0 +1,26 @@
+<!-- netconf_set_hostname_if_not_testing.xml -->
+<rpc>
+  <get>
+    <filter type="subtree">
+      <system>
+        <hostname/>
+      </system>
+    </filter>
+  </get>
+</rpc>
+<!--
+After retrieving the hostname, check if it is not "testing".
+If not, send the following edit-config with merge operation:
+-->
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running/>
+    </target>
+    <config>
+      <system xc:operation="merge">
+        <hostname>klwnbc12rb02</hostname>
+      </system>
+    </config>
+  </edit-config>
+</rpc>

@@ -1,0 +1,14 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running/>
+    </target>
+    <config>
+      <system xc:operation="merge">
+        <clock>
+          <timezone-name>America/New_York</timezone-name>
+        </clock>
+      </system>
+    </config>
+  </edit-config>
+</rpc>

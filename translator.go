@@ -106,16 +106,14 @@ func TranslateNetconfToMikrotik(xmlInput string) ([]string, error) {
 // --- Handlers for NETCONF operations ---
 
 func handleGet(get *Get) []string {
-	var cmds []string
-	// Very basic mapping: look for common OpenConfig elements
-	// Extend for more OpenConfig modules
-	return cmds
+	// Delegate to openconfig system get handler
+	return openconfig.SystemGetToMikrotikCmds(get.Filter.Value)
 }
 
 func handleEditConfig(edit *EditConfig) ([]string, error) {
 	var cmds []string
-	// Handle system configuration
-	cmds = append(cmds, openconfig.SystemToMikrotikCmds(edit.Config.System)...)
+	// Delegate to openconfig system set handler (registry-based)
+	cmds = append(cmds, openconfig.SystemToMikrotikCmdsRegistry("set", edit.Config.System)...)
 	// Extend for more OpenConfig modules
 	if len(cmds) == 0 {
 		return nil, errors.New("no supported edit-config elements found")

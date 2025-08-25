@@ -1,5 +1,24 @@
 package openconfig
 
+import "fmt"
+
+// SystemHostname represents the OpenConfig system/hostname feature
+type SystemHostname struct {
+	Value *string `xml:"hostname"`
+}
+
+func (h *SystemHostname) MikroTikCmd(op string) []string {
+	switch op {
+	case "get":
+		return []string{"/system/identity/print"}
+	case "set":
+		if h.Value != nil && *h.Value != "" {
+			return []string{fmt.Sprintf("/system/identity/set name=\"%s\"", *h.Value)}
+		}
+	}
+	return nil
+}
+
 type System struct {
 	Hostname *string        `xml:"hostname"`
 	Clock    *SystemClock   `xml:"clock"`

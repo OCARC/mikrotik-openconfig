@@ -1,0 +1,12 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <get>
+    <filter>
+      <system>
+        <clock>
+          <timezone-name/>
+          <timezone-utc-offset/>
+        </clock>
+      </system>
+    </filter>
+  </get>
+</rpc>

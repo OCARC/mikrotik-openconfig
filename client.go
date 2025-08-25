@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/go-routeros/routeros"
 )
@@ -9,6 +10,9 @@ import (
 // MikroTikClient wraps the routeros.Client for command execution
 // addr: "host:port", e.g. "192.168.88.1:8728"
 func NewMikroTikClient(addr, user, pass string) (*routeros.Client, error) {
+	if !strings.Contains(addr, ":") {
+		addr = addr + ":8728"
+	}
 	return routeros.Dial(addr, user, pass)
 }
 
